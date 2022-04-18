@@ -4,18 +4,29 @@
     <select id="interview">
         select 
             *
-        from bby_preinterview.conent_interview
+        from introduce.conent_interview
+        <if test={ no !=='none' && no !== null && no !==''}>
+        where no = #{no}
+        </if>
+        order by no desc
     </select>
-    <select id="portfolio">
-        select 
-            no
-            ,  category
-            ,  subject
-            ,  content
-            ,  imgSrc
-            ,  imgWidth
-            ,  imgHeight            
-        from bby_preinterview.portfolio
-    </select>    
+    <insert id="interviewInsert">
+        insert into 
+            introduce.conent_interview(
+                subject_
+                , content
+            )
+            value (
+                #{wr_subject}
+                ,  #{wr_content}
+            )
+    </insert>
+    <delete id="interviwDelete">
+        delete from
+           introduce.conent_interview
+        where
+            no = #{no} 
+    </delete>
+
 </mapper>
 
