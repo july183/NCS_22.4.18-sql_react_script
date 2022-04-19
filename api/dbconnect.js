@@ -1,17 +1,20 @@
 var express = require('express')
-var mysql = require('mysql')
-var mybatisMapper = require('mybatis-mapper')
-var dbconfig = require('../db/config.js')
 var router = express.Router();
-var pool = mysql.createPool(dbconfig); 
 
- 
-mybatisMapper.createMapper(['./mapper/introduceSql.xml'])
+var mysql = require('mysql')
+var dbconfig = require('../db/config.js')
+var pool = mysql.createPool(dbconfig);
+
+
+var mybatisMapper = require('mybatis-mapper')
+
+mybatisMapper.createMapper(['./mapper/introduceSQL.xml'])
 var format = { language : 'sql', indent : '  '}
 
-router.use(express.urlencoded({ extended : true }))
-router.use(express.json())//번역이 필요해서 사용한것
 
+//주소창에 담긴 변수를 읽기
+router.use(express.urlencoded({ extended : true }))
+router.use(express.json())
 
 
 router.post('/',(req, res) => {

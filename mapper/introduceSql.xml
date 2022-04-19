@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="introduceSql">
-    <select id="interview">
+<mapper namespace="introduceSQL">
+    <select id="interviewList">
         select 
             *
         from introduce.conent_interview
-        <if test={ no !=='none' && no !== null && no !==''}>
-        where no = #{no}
+        <if test=" isno !== null && isno !=='' ">
+        where id = #{isno};
         </if>
-        order by no desc
+        order by id desc
     </select>
     <insert id="interviewInsert">
         insert into 
-            introduce.conent_interview(
-                subject_
-                , content
+            introduce.conent_interview (
+                subject_                
+                , content 
             )
-            value (
-                #{wr_subject}
+            values (
+                 #{wr_subject}
                 ,  #{wr_content}
             )
     </insert>
-    <delete id="interviwDelete">
+    <delete id="interviewDelete">
         delete from
-           introduce.conent_interview
-        where
-            no = #{no} 
-    </delete>
-
+            introduce.conent_interview 
+        where 
+            id = #{no}
+    </delete> 
+   
 </mapper>
 

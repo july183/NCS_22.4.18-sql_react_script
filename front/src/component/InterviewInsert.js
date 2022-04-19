@@ -12,7 +12,7 @@ function InsertInterview(props){
 
     const  fnValidate = () =>{ 
       if(!$('#agreeTerm').is(':checked')){ 
-          setMessage("동의하시나요");
+          setMessage("동의하시게나");
           return false;
       } 
       if($('#wr_subject').val() == '' ){
@@ -44,6 +44,7 @@ function InsertInterview(props){
             body : Json_data
           })
           .then( result =>  {  
+            //console.log(result); 
             if(result.data == 'succ')  {
               setMessage('노드에 잘 접속되고 전달되었음');
               $('.formStyle [name]').val('');

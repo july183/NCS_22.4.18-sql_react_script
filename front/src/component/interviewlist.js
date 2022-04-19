@@ -11,13 +11,13 @@ class Classcomponent extends Component {
         this.state ={
             message : '서비스요청을 기다리는 중...',
             interviewData : [],
-            deleteDB : async (no) => {
+            deleteDB : async (id) => {
                 try{
                
                     axios.post('/api?type=interviewDelete', {
                         
                         body :{ 
-                                no : no,
+                                no : id,
                                 crud : 'delete',
                                 mapper : this.props.dbinfo.mapper,
                                 mapperid :'interviewDelete'
@@ -86,12 +86,12 @@ class Classcomponent extends Component {
                          (content,i) =>
                          {
                              return (
-                                <Accordion.Item eventKey={i.toString()} key={ content.no } >
+                                <Accordion.Item eventKey={i.toString()} key={ content.id } >
 
                                     <Accordion.Header>
                                    
                                         <strong className='row justify-content-between align-items-center w-100'>
-                                            <span className='col-sm-9 mb-0'> { content.subject }</span>
+                                            <span className='col-sm-9 mb-0'> { content.subject_ }</span>
                                             <span className='btn interviewBtn col-sm-3  mb-0'>
                                                 <Link to={'/interviewModify/'+ content.no } className='modify btn btn-primary mx-1 '>M</Link> 
                                                 <a href="#" onClick={ e=>{ this.state.deleteDB(content.no) }}  className='delete btn btn-primary mx-1'>D</a>
